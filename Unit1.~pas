@@ -1,0 +1,43 @@
+unit Unit1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, ExtCtrls;
+
+type
+  TForm1 = class(TForm)
+    Image1: TImage;
+    BitBtn1: TBitBtn;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  masshtab, XCenter, YCenter:extended;
+implementation
+
+{$R *.dfm}
+procedure putpixel(x,y:extended;color:longint);
+begin
+  form1.Image1.Canvas.Pixels[Round(XCenter+x*masshtab),Round(YCenter-Y*masshtab)]:=color;
+end;
+procedure line(x1,y1,x2,y2:extended; color:longint);
+begin
+  Form1.Image1.Canvas.Pen.Color:=color;
+  Form1.Image1.Canvas.MoveTo(Round(XCenter+x1*masshtab),Round(YCenter-Y1*masshtab));
+  Form1.Image1.Canvas.LineTo(Round(XCenter+x2*masshtab),Round(YCenter-Y2*masshtab));
+
+end;
+procedure OutText(x,y:extended; text:string; color:longint);
+begin
+  Form1.Image1.Canvas.Pen.Color:=color;
+  Form1.Image1.Canvas.TextOut(Round(XCenter+x*masshtab),Round(YCenter-Y*masshtab),text);
+end;
+
+end.
+ 
